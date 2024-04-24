@@ -30,6 +30,9 @@ jobs:
       - name: Display Maven version
         run: mvn -version
         
+      - name: Generate JaCoCo Report Manually
+        run: mvn org.jacoco:jacoco-maven-plugin:report
+
       - name: Build with Coverage Profile
         run: mvn clean verify -Pcoverage -e
         
