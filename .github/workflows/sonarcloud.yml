@@ -18,6 +18,18 @@ jobs:
         with:
           fetch-depth: 0 # Necessary for SonarCloud to analyze all history
 
+      - name: Display Maven version
+        run: mvn -version
+        
+      - name: Build with Coverage Profile
+        run: mvn clean verify -Pcoverage -e
+        
+      - name: List Target Directory
+        run: ls -alh ./target/
+        
+      - name: List JaCoCo Directory
+        run: ls -alh ./target/site/jacoco/
+
       - name: Verify JaCoCo Report Generation
         run: ls -alh ./target/site/jacoco/
 
