@@ -40,10 +40,7 @@ jobs:
         run: ls -alh ./target/
         
       - name: List JaCoCo Directory
-        run: ls -alh ./target/site/jacoco/
-
-      - name: Verify JaCoCo Report Generation
-        run: ls -alh ./target/site/jacoco/
+        run: ls -alR ./target/
 
       - name: Cache Maven packages
         uses: actions/cache@v2
