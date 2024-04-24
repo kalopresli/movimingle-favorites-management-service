@@ -24,21 +24,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       
-      - name: Build with Coverage Profile
-        run: mvn clean verify -Pcoverage -e
-      
-      - name: Generate JaCoCo Report Manually
-        run: mvn org.jacoco:jacoco-maven-plugin:report -e -X
-      
-      - name: List Target Directory After JaCoCo Generation
-        run: ls -alR ./target/
-      
-      - name: Upload Target Directory as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: target-directory
-          path: target/
-
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -48,3 +33,6 @@ jobs:
 
       - name: Build and analyze with Maven and SonarCloud
         run: mvn clean verify sonar:sonar -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Pcoverage
+
+      - name: Print JaCoCo Coverage Summary
+        run: cat ./target/site/jacoco/jacoco.csv
