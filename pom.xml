@@ -101,24 +101,14 @@
 								<configuration>
 									<outputDirectory>${project.build.directory}/jacoco-report</outputDirectory>
 									<outputEncoding>UTF-8</outputEncoding>
-								</configuration>
-							</execution>
-							<!-- Adding execution to log coverage summary -->
-							<execution>
-								<id>log-coverage-summary</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>report</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/jacoco-summary</outputDirectory>
-									<dataFile>${project.build.directory}/jacoco.exec</dataFile> <!-- Ensure this points to your coverage data file -->
-									<outputEncoding>UTF-8</outputEncoding>
 									<formats>
-										<format>CSV</format> <!-- CSV format for easy reading in logs -->
+										<format>HTML</format>
+										<format>XML</format>
+										<format>CSV</format> <!-- Ensure CSV format for console output -->
 									</formats>
 								</configuration>
 							</execution>
+							<!-- Additional execution for logging coverage summary might be added here -->
 						</executions>
 					</plugin>
 				</plugins>
@@ -128,13 +118,11 @@
 
 	<build>
 		<plugins>
-
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.11.0.3922</version>
 			</plugin>
-
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -161,7 +149,6 @@
 					</compilerArgs>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
