@@ -18,6 +18,9 @@ jobs:
         with:
           fetch-depth: 0 # Necessary for SonarCloud to analyze all history
 
+      - name: Verify JaCoCo Report Generation
+        run: ls -alh ./target/site/jacoco/
+
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
@@ -32,4 +35,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Build and analyze with Maven and SonarCloud
-        run: mvn clean verify sonar:sonar -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Pcoverage
+        run: mvn clean verify sonar:sonar -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Pcoverage -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
+
+
