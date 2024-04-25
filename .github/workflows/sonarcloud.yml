@@ -33,10 +33,7 @@ jobs:
 
       - name: Build and analyze with Maven and SonarCloud
         run: 
-          mvn verify
-
-      - name: Find JaCoCo coverage reports
-        run: find ./target/ -name 'jacoco*.csv'
+          mvn verify sonar:sonar -Pcoverage -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
       - name: Print JaCoCo Coverage Summary
         run: |
@@ -47,9 +44,4 @@ jobs:
             echo "No JaCoCo CSV report found."
           fi
 
-      - name: Upload target folder as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: project-artifacts
-          path: target/
-          if-no-files-found: error # Optional: "warn" or "ignore" (default "warn")
+
