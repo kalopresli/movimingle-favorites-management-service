@@ -1,0 +1,1 @@
+INSERT INTO movie (external_Id, title, description) VALUES ('movie123', 'Example Movie', 'Example description of the movie');
