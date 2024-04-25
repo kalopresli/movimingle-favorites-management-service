@@ -9,9 +9,11 @@ import com.backend.favoritesmanagementservice.service.MessageSenderService;
 import com.backend.favoritesmanagementservice.service.UserFavoriteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 import java.util.HashSet;
@@ -21,6 +23,7 @@ import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@ExtendWith(MockitoExtension.class)
 public class UserFavoriteServiceTests {
 
     @Mock
@@ -35,10 +38,6 @@ public class UserFavoriteServiceTests {
     @InjectMocks
     private UserFavoriteService userFavoriteService;
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
 
 /*    @Test
     public void testAddFavoriteMovie() {

@@ -5,9 +5,11 @@ import com.backend.favoritesmanagementservice.domain.Movie;
 import com.backend.favoritesmanagementservice.service.MovieService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -24,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
+@ExtendWith(MockitoExtension.class)
 public class MovieControllerTests {
 
     private MockMvc mockMvc;
@@ -35,8 +38,8 @@ public class MovieControllerTests {
     private MovieController movieController;
 
     @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() {
+        // Initialize MockMvc to use the injected mocks and stand-alone setup
         mockMvc = MockMvcBuilders.standaloneSetup(movieController).build();
     }
 
