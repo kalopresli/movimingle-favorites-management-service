@@ -43,6 +43,7 @@ public class MovieControllerTests {
         mockMvc = MockMvcBuilders.standaloneSetup(movieController).build();
     }
 
+
     @Test
     public void testAddMovie() throws Exception {
         Movie movie = new Movie();
