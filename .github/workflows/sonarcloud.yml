@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and analyze with Maven and SonarCloud
         run: 
-          mvn verify sonar:sonar -Pcoverage -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          mvn verify
 
       - name: Find JaCoCo coverage reports
         run: find ./target/ -name 'jacoco*.csv'
