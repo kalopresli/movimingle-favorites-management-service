@@ -22,7 +22,8 @@ public class UserFavoriteService {
     private final MessageSenderService messageSenderService;
 
     @Transactional
-    public UserFavorite addFavoriteMovie(Long userId, String movieExternalId) {
+    public UserFavorite
+    addFavoriteMovie(Long userId, String movieExternalId) {
         Optional<UserFavorite> userFavoriteOpt = userFavoriteRepository.findByUserId(userId);
         UserFavorite userFavorite = userFavoriteOpt.orElseGet(() -> new UserFavorite(userId));
 

@@ -22,7 +22,7 @@ public class UserFavoriteController {
     }
 
     @GetMapping
-    public List<UserFavorite> getAllFavorites(@RequestBody Long userId) {
+    public List<UserFavorite> getAllFavorites(@RequestParam Long userId) {
         return userFavoriteService.getAllFavorites(userId);
     }
 }
